@@ -65,6 +65,6 @@ install:
 
 script:
   - ./node_modules/.bin/node-pre-gyp package testpackage
-  - (npm use 8 && npm test)
-  - (npm use 10 && npm test)
+  - (nvm use 8 && npm test)
+  - (nvm use 10 && npm test)
   - if [[ "${PUBLISH_BINARY}" == "true" ]]; then ./scripts/publish.sh; rm -rf {build,lib}; ./node_modules/.bin/node-pre-gyp install --fallback-to-build=false; npm test; fi
