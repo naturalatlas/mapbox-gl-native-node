@@ -15,7 +15,9 @@ addons:
     - g++-4.8
     - libc6-dev
     - xvfb
+    - mesa
     - mesa-common-dev
+    - freeglut3
     - freeglut3-dev
     - libgl1-mesa-glx
     - libgl1-mesa-dev
@@ -24,6 +26,15 @@ addons:
     - libxxf86vm-dev
     - libglfw3
     - libglfw3-dev
+    - libxi-dev
+    - libglu1-mesa-dev
+    - x11proto-randr-dev
+    - x11proto-xext-dev
+    - libxrandr-dev
+    - x11proto-xf86vidmode-dev
+    - libxxf86vm-dev
+    - libxcursor-dev
+    - libxinerama-dev
 
 matrix:
   include:
