@@ -1,0 +1,6 @@
+.DS_Store
+Thumbs.db
+build
+node_modules
+lib
+mapbox-gl-js

@@ -1,3 +1,3 @@
 [submodule "mapbox-gl-native"]
 	path = mapbox-gl-native
-	url = git@github.com:mapbox/mapbox-gl-native.git
+	url = https://github.com/mapbox/mapbox-gl-native.git

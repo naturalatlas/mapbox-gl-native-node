@@ -1,0 +1,61 @@
+language: cpp
+
+compiler:
+  - gcc
+
+addons:
+  homebrew:
+    packages:
+    - glfw3
+    update: true
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+    - libc6-dev
+    - glfw3
+    - glfw3-dev
+    - xvfb
+    - libgles2-mesa-dev
+    - libgbm-dev
+    - libxxf86vm-dev
+
+matrix:
+  include:
+    - os: osx
+      env: BUILDTYPE=RelWithDebInfo
+    - os: linux
+      dist: trusty
+      env: BUILDTYPE=RelWithDebInfo
+
+before_install:
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then export CXX=g++-4.8; fi
+  - COMMIT_MESSAGE=$(git show -s --format=%B $TRAVIS_COMMIT | tr -d '\n')
+  - PUBLISH_BINARY=false
+  - if test "${COMMIT_MESSAGE#*'[publish binary]'}" != "$COMMIT_MESSAGE" && test "${TRAVIS_BRANCH}" == "master" && test "${TRAVIS_PULL_REQUEST}" == "false"; then PUBLISH_BINARY=true; fi;
+  - git clone https://github.com/creationix/nvm.git ../.nvm && source ../.nvm/nvm.sh
+  - nvm install 8
+  - nvm install 10
+  - nvm use 10
+  - node --version
+  - npm --version
+  - $CXX --version
+  - NPM_CACHE=$(npm config get cache)
+  - echo $NPM_CACHE
+  - if [ -d $NPM_CACHE ]; then sudo chown -R $USER $NPM_CACHE; fi;
+
+install:
+  - git submodule update --init --recursive
+  - (grep -v "platform/node" ./mapbox-gl-native/platform/macos/macos.cmake > tmp; mv tmp ./mapbox-gl-native/platform/macos/macos.cmake)
+  - (grep -v "platform/node" ./mapbox-gl-native/platform/linux/linux.cmake > tmp; mv tmp ./mapbox-gl-native/platform/linux/linux.cmake)
+  - npm update
+  - ln -s ../node_modules ./mapbox-gl-native/node_modules
+  - cmake . -B build
+  - cmake --build build
+
+script:
+  - ./node_modules/.bin/node-pre-gyp package testpackage
+  - (npm use 8 && npm test)
+  - (npm use 10 && npm test)
+  - if [[ "${PUBLISH_BINARY}" == "true" ]]; then ./scripts/publish.sh; rm -rf {build,lib}; ./node_modules/.bin/node-pre-gyp install --fallback-to-build=false; npm test; fi

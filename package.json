@@ -1,24 +1,41 @@
 {
-  "name": "@mapbox/mapbox-gl-native",
-  "version": "5.0.0",
-  "description": "Renders map tiles with Mapbox GL",
+  "name": "@naturalatlas/mapbox-gl-native",
+  "version": "0.0.0",
+  "description": "Node.js bindings to Mapbox GL native",
   "keywords": [
+    "mbgl",
     "mapbox",
+    "mapbox gl",
     "gl"
   ],
-  "main": "platform/node/index.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mapbox/mapbox-gl-native.git"
+    "url": "git://github.com/naturalatlas/mapbox-gl-native.git"
+  },
+  "scripts": {
+    "test": "tape 'test/**/*.test.js'"
   },
   "license": "BSD-2-Clause",
   "dependencies": {
     "@mapbox/cmake-node-module": "^1.2.0",
     "minimatch": "^3.0.4",
-    "node-pre-gyp": "^0.10.2",
-    "npm-run-all": "^4.0.2"
+    "node-pre-gyp": "^0.15.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "binary": {
+    "module_name": "mbgl",
+    "module_path": "./lib/{node_abi}",
+    "host": "https://naturalatlas-node-binary.s3.amazonaws.com",
+    "remote_path": "./{name}/v{version}",
+    "package_name": "{node_abi}-{platform}-{arch}-{configuration}.tar.gz"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
+  },
+  "devDependencies": {
+    "pngjs": "^5.0.0",
+    "request": "^2.88.2",
+    "tape": "^5.0.1"
   }
 }

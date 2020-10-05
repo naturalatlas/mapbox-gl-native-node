@@ -11,7 +11,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
 
 if(NOT EXISTS ${PROJECT_SOURCE_DIR}/node_modules/@mapbox/cmake-node-module/module.cmake)
-    message("-- Not building node bindings, dependencies not found. Run 'npm update'.")
+    message("-- Not building node bindings, dependencies not found. Run 'npm install'.")
+    message("-- ${PROJECT_SOURCE_DIR}/node_modules/@mapbox/cmake-node-module/module.cmake")
     return()
 endif()
 
@@ -23,7 +24,7 @@ include(${PROJECT_SOURCE_DIR}/node_modules/@mapbox/cmake-node-module/module.cmak
 add_node_module(
     mbgl-node
     INSTALL_PATH ${PROJECT_SOURCE_DIR}/lib/{node_abi}/mbgl.node
-    NAN_VERSION 2.10.0
+    NAN_VERSION 2.14.1
     EXCLUDE_NODE_ABIS
         46
         47
