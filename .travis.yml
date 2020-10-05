@@ -9,8 +9,6 @@ addons:
     - glfw3
     update: true
   apt:
-    sources:
-    - ubuntu-toolchain-r-test
     packages:
     - xvfb
     - libgl1-mesa-glx
@@ -18,6 +16,8 @@ addons:
     - libglfw3
     - libglfw3-dev
     - mesa-common-dev
+    - libuv1
+    - libuv1-dev
 
 matrix:
   include:
@@ -28,6 +28,7 @@ matrix:
       env: BUILDTYPE=RelWithDebInfo
 
 before_install:
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then export CC=gcc-4.8; export CXX=g++-4.8; fi
   - >
     if [[ $TRAVIS_OS_NAME == "linux" ]]; then
     mkdir $HOME/usr;
