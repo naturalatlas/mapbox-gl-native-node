@@ -29,6 +29,14 @@ matrix:
 
 before_install:
   - if [[ $TRAVIS_OS_NAME == "linux" ]]; then export CXX=g++-4.8; fi
+  - >
+    if [[ $TRAVIS_OS_NAME == "linux" ]];
+    mkdir $HOME/usr;
+    export PATH="$HOME/usr/bin:$PATH";
+    wget https://cmake.org/files/v3.16/cmake-3.16.2-Linux-x86_64.sh;
+    chmod +x cmake-3.16.2-Linux-x86_64.sh;
+    ./cmake-3.16.2-Linux-x86_64.sh --prefix=$HOME/usr --exclude-subdir --skip-license;
+    fi
   - COMMIT_MESSAGE=$(git show -s --format=%B $TRAVIS_COMMIT | tr -d '\n')
   - PUBLISH_BINARY=false
   - if test "${COMMIT_MESSAGE#*'[publish binary]'}" != "$COMMIT_MESSAGE" && test "${TRAVIS_BRANCH}" == "master" && test "${TRAVIS_PULL_REQUEST}" == "false"; then PUBLISH_BINARY=true; fi;
@@ -38,6 +46,7 @@ before_install:
   - nvm use 10
   - node --version
   - npm --version
+  - cmake --version
   - $CXX --version
   - NPM_CACHE=$(npm config get cache)
   - echo $NPM_CACHE
@@ -50,7 +59,6 @@ install:
   - npm update
   - ln -s ../node_modules ./mapbox-gl-native/node_modules
   - mkdir build
-  - cmake --version
   - cmake -S . -B build
   - cmake --build build
 
