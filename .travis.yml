@@ -15,6 +15,7 @@ addons:
     - g++-4.8
     - libc6-dev
     - xvfb
+    - libgl1-mesa-glx
     - libgl1-mesa-dev
     - libgles2-mesa-dev
     - libgbm-dev
