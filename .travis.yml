@@ -22,7 +22,6 @@ addons:
 matrix:
   include:
     - os: osx
-      osx_image: xcode8
       env: BUILDTYPE=RelWithDebInfo
     - os: linux
       dist: focal
@@ -57,7 +56,7 @@ install:
   - git submodule update --init --recursive
   - (grep -v "platform/node" ./mapbox-gl-native/platform/macos/macos.cmake > tmp; mv tmp ./mapbox-gl-native/platform/macos/macos.cmake)
   - (grep -v "platform/node" ./mapbox-gl-native/platform/linux/linux.cmake > tmp; mv tmp ./mapbox-gl-native/platform/linux/linux.cmake)
-  - npm update
+  - npm install
   - ln -s ../node_modules ./mapbox-gl-native/node_modules
   - mkdir build
   - cmake -S . -B build
