@@ -22,6 +22,8 @@ addons:
     - libgles2-mesa-dev
     - libgbm-dev
     - libxxf86vm-dev
+    - libglfw3
+    - libglfw3-dev
 
 matrix:
   include:
