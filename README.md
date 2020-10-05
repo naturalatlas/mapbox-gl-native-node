@@ -1,6 +1,7 @@
 # Mapbox GL Native Node Bindings
 
 [![npm version](https://badge.fury.io/js/%40naturalatlas%2Fmapbox-gl-native.svg)](https://badge.fury.io/js/%40naturalatlas%2Fmapbox-gl-native)
+[![](https://travis-ci.org/naturalatlas/mapbox-gl-native-node.svg?branch=master)](https://travis-ci.org/github/naturalatlas/mapbox-gl-native-node)
 
 This project provides pre-built Node.js bindings to Mapbox GL. Official node bindings from Mapbox are discontinued, per [mapbox-gl-native#16418](https://github.com/mapbox/mapbox-gl-native/issues/16418#issuecomment-621127219).
 

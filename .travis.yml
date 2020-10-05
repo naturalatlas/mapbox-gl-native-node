@@ -14,8 +14,6 @@ addons:
     packages:
     - g++-4.8
     - libc6-dev
-    - glfw3
-    - glfw3-dev
     - xvfb
     - libgles2-mesa-dev
     - libgbm-dev
