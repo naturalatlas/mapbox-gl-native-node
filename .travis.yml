@@ -12,19 +12,12 @@ addons:
     sources:
     - ubuntu-toolchain-r-test
     packages:
-    - g++-4.8
-    - libc6-dev
     - xvfb
-    - mesa-common-dev
-    - freeglut3
-    - freeglut3-dev
     - libgl1-mesa-glx
     - libgl1-mesa-dev
-    - libgles2-mesa-dev
-    - libgbm-dev
-    - libxxf86vm-dev
     - libglfw3
     - libglfw3-dev
+    - mesa-common-dev
 
 matrix:
   include:
