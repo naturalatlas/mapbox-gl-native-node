@@ -22,13 +22,14 @@ addons:
 matrix:
   include:
     - os: osx
+      osx_image: xcode8
       env: BUILDTYPE=RelWithDebInfo
     - os: linux
       dist: focal
       env: BUILDTYPE=RelWithDebInfo
 
 before_install:
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then export CC=gcc-4.8; export CXX=g++-4.8; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then export CC=gcc-4.9; export CXX=g++-4.9; fi
   - >
     if [[ $TRAVIS_OS_NAME == "linux" ]]; then
     mkdir $HOME/usr;
