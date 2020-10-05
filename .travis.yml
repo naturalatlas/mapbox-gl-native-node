@@ -24,7 +24,7 @@ matrix:
     - os: osx
       env: BUILDTYPE=RelWithDebInfo
     - os: linux
-      dist: trusty
+      dist: xenial
       env: BUILDTYPE=RelWithDebInfo
 
 before_install:
@@ -50,6 +50,7 @@ install:
   - npm update
   - ln -s ../node_modules ./mapbox-gl-native/node_modules
   - mkdir build
+  - cmake --version
   - cmake -S . -B build
   - cmake --build build
 
