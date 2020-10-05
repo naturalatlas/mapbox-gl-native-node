@@ -15,7 +15,6 @@ addons:
     - g++-4.8
     - libc6-dev
     - xvfb
-    - mesa
     - mesa-common-dev
     - freeglut3
     - freeglut3-dev
@@ -24,6 +23,7 @@ addons:
     - libgles2-mesa-dev
     - libgbm-dev
     - libxxf86vm-dev
+    - glfw3
     - libglfw3
     - libglfw3-dev
     - libxi-dev
