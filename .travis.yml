@@ -16,6 +16,7 @@ addons:
     - libosmesa6-dev
     - libgl1-mesa-glx
     - libgl1-mesa-dev
+    - libegl1-mesa-dev
     - libglfw3
     - libglfw3-dev
     - mesa-common-dev
@@ -64,9 +65,9 @@ install:
   - (grep -v "platform/node" ./mapbox-gl-native/platform/linux/linux.cmake > tmp; mv tmp ./mapbox-gl-native/platform/linux/linux.cmake)
   - >
     if [[ $TRAVIS_OS_NAME == "linux" ]]; then
-    sed -i 's/OpenGL REQUIRED GLX/OpenGL REQUIRED/g' ./mapbox-gl-native/platform/linux/linux.cmake;
-    sed -i 's/OpenGL::GLX/OpenGL::GL/g' ./mapbox-gl-native/platform/linux/linux.cmake;
-    sed -i 's/\/platform\/linux\/src\/headless_backend_glx/\/platform\/default\/src\/mbgl\/gl\/headless_backend_osmesa/g' ./mapbox-gl-native/platform/linux/linux.cmake;
+    sed -i 's/OpenGL REQUIRED GLX/OpenGL REQUIRED EGL/g' ./mapbox-gl-native/platform/linux/linux.cmake;
+    sed -i 's/OpenGL::GLX/OpenGL::EGL/g' ./mapbox-gl-native/platform/linux/linux.cmake;
+    sed -i 's/\/platform\/linux\/src\/headless_backend_glx/\/platform\/linux\/src\/headless_backend_egl/g' ./mapbox-gl-native/platform/linux/linux.cmake;
     fi
   - npm install
   - ln -s ../node_modules ./mapbox-gl-native/node_modules
