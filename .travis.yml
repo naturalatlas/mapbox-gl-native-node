@@ -24,7 +24,7 @@ addons:
 matrix:
   include:
     - os: osx
-      osx_image: xcode12
+      osx_image: xcode11 # https://github.com/mapbox/mapbox-gl-native/issues/16540
       env: BUILDTYPE=RelWithDebInfo
     - os: linux
       dist: focal
