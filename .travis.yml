@@ -61,6 +61,7 @@ install:
   - git submodule update --init --recursive
   - (grep -v "platform/node" ./mapbox-gl-native/platform/macos/macos.cmake > tmp; mv tmp ./mapbox-gl-native/platform/macos/macos.cmake)
   - (grep -v "platform/node" ./mapbox-gl-native/platform/linux/linux.cmake > tmp; mv tmp ./mapbox-gl-native/platform/linux/linux.cmake)
+  - sed 's/linux\/linux/glfw\/glfw/g' ./mapbox-gl-native/CMakeLists.txt
   - npm install
   - ln -s ../node_modules ./mapbox-gl-native/node_modules
   - mkdir build
