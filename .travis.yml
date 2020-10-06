@@ -72,7 +72,8 @@ install:
     sed -i 's/OpenGL::GLX/OpenGL::EGL/g' ./mapbox-gl-native/platform/linux/linux.cmake;
     sed -i 's/\/platform\/linux\/src\/headless_backend_glx/\/platform\/linux\/src\/headless_backend_egl/g' ./mapbox-gl-native/platform/linux/linux.cmake;
     fi
-  - sed -i 's/node-pre-gyp install --fallback-to-build=false//g' ./package.json
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sed -i 's/node-pre-gyp install --fallback-to-build=false//g' ./package.json; fi
+  - if [[ $TRAVIS_OS_NAME == "osx" ]]; then sed -i .bak 's/node-pre-gyp install --fallback-to-build=false//g' ./package.json; fi
   - npm install
   - ln -s ../node_modules ./mapbox-gl-native/node_modules
   - mkdir build

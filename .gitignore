@@ -3,3 +3,4 @@ Thumbs.db
 build
 node_modules
 lib
+*.bak

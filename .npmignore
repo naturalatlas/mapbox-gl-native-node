@@ -10,3 +10,4 @@ mapbox-gl-native
 Makefile
 CmakeLists.txt
 DEVELOPMENT.md
+*.bak
