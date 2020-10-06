@@ -72,7 +72,7 @@ install:
     sed -i 's/OpenGL::GLX/OpenGL::EGL/g' ./mapbox-gl-native/platform/linux/linux.cmake;
     sed -i 's/\/platform\/linux\/src\/headless_backend_glx/\/platform\/linux\/src\/headless_backend_egl/g' ./mapbox-gl-native/platform/linux/linux.cmake;
     fi
-  - (grep -v "node-pre-gyp install" ./package.json > tmp; mv tmp ./package.json)
+  - sed -i 's/node-pre-gyp install --fallback-to-build=false//g' ./package.json
   - npm install
   - ln -s ../node_modules ./mapbox-gl-native/node_modules
   - mkdir build
