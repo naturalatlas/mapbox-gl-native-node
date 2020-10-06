@@ -6,3 +6,7 @@ lib
 mapbox-gl-js
 test
 scripts
+mapbox-gl-native
+Makefile
+CmakeLists.txt
+DEVELOPMENT.md

@@ -14,7 +14,8 @@
     "url": "git://github.com/naturalatlas/mapbox-gl-native.git"
   },
   "scripts": {
-    "test": "tape 'test/**/*.test.js'"
+    "test": "tape 'test/**/*.test.js'",
+    "install": "node-pre-gyp install --fallback-to-build=false"
   },
   "license": "BSD-2-Clause",
   "dependencies": {
