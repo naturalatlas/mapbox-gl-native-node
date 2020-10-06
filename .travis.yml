@@ -88,4 +88,10 @@ script:
   - if [[ $TRAVIS_OS_NAME == "linux" ]]; then (nvm use 12 && xvfb-run -s '-screen 0 1024x768x24 +iglx' npm test); fi
   - if [[ $TRAVIS_OS_NAME == "linux" ]]; then (nvm use 13 && xvfb-run -s '-screen 0 1024x768x24 +iglx' npm test); fi
   - if [[ $TRAVIS_OS_NAME == "linux" ]]; then (nvm use 14 && xvfb-run -s '-screen 0 1024x768x24 +iglx' npm test); fi
-  - if [[ "${PUBLISH_BINARY}" == "true" ]]; then ./scripts/publish.sh; rm -rf {build,lib}; ./node_modules/.bin/node-pre-gyp install --fallback-to-build=false; xvfb-run -s '-screen 0 1024x768x24 +iglx' npm test; fi
+  - >
+    if [[ "${PUBLISH_BINARY}" == "true" ]]; then
+    ./scripts/publish.sh;
+    rm -rf {build,lib};
+    ./node_modules/.bin/node-pre-gyp install --fallback-to-build=false;
+    if [[ $TRAVIS_OS_NAME == "linux" ]]; then xvfb-run -s '-screen 0 1024x768x24 +iglx' npm test; fi;
+    fi
