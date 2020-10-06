@@ -65,7 +65,7 @@ install:
     if [[ $TRAVIS_OS_NAME == "linux" ]]; then
     sed -i 's/OpenGL REQUIRED GLX/OpenGL REQUIRED/g' ./mapbox-gl-native/platform/linux.cmake;
     sed -i 's/OpenGL::GLX/OpenGL::GL/g' ./mapbox-gl-native/platform/linux.cmake;
-    (grep -v "headless_backend_glx" ./mapbox-gl-native/platform/linux/linux.cmake > tmp; mv tmp ./mapbox-gl-native/platform/linux/linux.cmake)
+    (grep -v "headless_backend_glx" ./mapbox-gl-native/platform/linux/linux.cmake > tmp; mv tmp ./mapbox-gl-native/platform/linux/linux.cmake);
     fi
   - npm install
   - ln -s ../node_modules ./mapbox-gl-native/node_modules
