@@ -12,6 +12,7 @@ addons:
   apt:
     packages:
     - xvfb
+    - mesa-utils
     - libgl1-mesa-glx
     - libgl1-mesa-dev
     - libglfw3
@@ -38,6 +39,7 @@ before_install:
     chmod +x cmake-3.18.3-Linux-x86_64.sh;
     ./cmake-3.18.3-Linux-x86_64.sh --prefix=$HOME/usr --exclude-subdir --skip-license;
     fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then xvfb-run -s '-screen 0 1024x768x24 +iglx' glxinfo; fi
   - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sudo apt-get purge nvidia*; fi
   - COMMIT_MESSAGE=$(git show -s --format=%B $TRAVIS_COMMIT | tr -d '\n')
   - PUBLISH_BINARY=false
