@@ -6,6 +6,7 @@
 This project provides pre-built Node.js bindings to Mapbox GL. Official node bindings from Mapbox are discontinued, per [mapbox-gl-native#16418](https://github.com/mapbox/mapbox-gl-native/issues/16418#issuecomment-621127219).
 
 ```sh
+sudo apt-get install libuv1
 npm install @naturalatlas/mapbox-gl-native --save
 ```
 

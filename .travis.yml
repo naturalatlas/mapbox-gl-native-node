@@ -70,6 +70,7 @@ install:
     if [[ $TRAVIS_OS_NAME == "linux" ]]; then
     sed -i 's/OpenGL REQUIRED GLX/OpenGL REQUIRED EGL/g' ./mapbox-gl-native/platform/linux/linux.cmake;
     sed -i 's/OpenGL::GLX/OpenGL::EGL/g' ./mapbox-gl-native/platform/linux/linux.cmake;
+    sed -i 's/if(NOT \${ICU_FOUND} OR "\${ICU_VERSION}" VERSION_LESS [0-9]*.[0-9]*)/if(TRUE)/g' ./mapbox-gl-native/platform/linux/linux.cmake;
     sed -i 's/\/platform\/linux\/src\/headless_backend_glx/\/platform\/linux\/src\/headless_backend_egl/g' ./mapbox-gl-native/platform/linux/linux.cmake;
     fi
   - if [[ $TRAVIS_OS_NAME == "linux" ]]; then sed -i 's/node-pre-gyp install --fallback-to-build=false//g' ./package.json; fi
