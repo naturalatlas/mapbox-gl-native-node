@@ -460,7 +460,6 @@ test('Map', function(t) {
             var delay = 0;
             var map = new mbgl.Map({
                 request: function(req, callback) {
-                  console.log('!!', req);
                     delay += 100;
                     setTimeout(function() {
                         callback(new Error('not found'));
@@ -468,11 +467,8 @@ test('Map', function(t) {
                 },
                 ratio: 1
             });
-              console.log('!!', 'A');
             map.load(style);
-              console.log('!!', 'B');
             map.render({ zoom: 1 }, function(err, data) {
-              console.log('!!', 'C', err);
                 map.release();
 
                 t.ok(err, 'returns error');
