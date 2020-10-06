@@ -34,7 +34,7 @@ void NodeRequest::Init() {
 
     Nan::SetPrototypeMethod(tpl, "respond", HandleCallback);
 
-    constructor.Reset(tpl->GetFunction());
+    constructor.Reset(Nan::GetFunction(tpl).ToLocalChecked());
 }
 
 void NodeRequest::New(const Nan::FunctionCallbackInfo<v8::Value>& info) {

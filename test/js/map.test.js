@@ -200,7 +200,7 @@ test('Map', function(t) {
             var map = new mbgl.Map(options);
 
             t.throws(function() {
-                map.addImage('foo', new Buffer(''), {
+                map.addImage('foo', Buffer.from('', 'utf8'), {
                     width: 401,
                     height: 400,
                     pixelRatio: 1
@@ -215,7 +215,7 @@ test('Map', function(t) {
             var map = new mbgl.Map(options);
 
             t.throws(function() {
-                map.addImage('foo', new Buffer(''), {
+                map.addImage('foo', Buffer.from('', 'utf8'), {
                     width: 1025,
                     height: 1025,
                     pixelRatio: 1
@@ -231,7 +231,7 @@ test('Map', function(t) {
             var map = new mbgl.Map(options);
 
             t.throws(function() {
-                map.addImage('foo', new Buffer('   '), {
+                map.addImage('foo', Buffer.from('   ', 'utf8'), {
                     width: 401,
                     height: 400,
                     pixelRatio: 1
@@ -246,7 +246,7 @@ test('Map', function(t) {
             var map = new mbgl.Map(options);
 
             t.doesNotThrow(function() {
-                map.addImage('foo', new Buffer('    '), {
+                map.addImage('foo', Buffer.from('    ', 'utf8'), {
                     width: 1,
                     height: 1,
                     pixelRatio: 1

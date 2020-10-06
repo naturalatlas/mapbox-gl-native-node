@@ -9,7 +9,7 @@ This project provides pre-built Node.js bindings to Mapbox GL. Official node bin
 npm install @naturalatlas/mapbox-gl-native --save
 ```
 
-**Current Node Version Support**: 8, 10
+**Current Node Version Support**: 8, 10, 12, 13, 14
 
 ## Rendering a map tile
 

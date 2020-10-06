@@ -49,6 +49,9 @@ before_install:
   - git clone https://github.com/creationix/nvm.git ../.nvm && source ../.nvm/nvm.sh
   - nvm install 8
   - nvm install 10
+  - nvm install 12
+  - nvm install 13
+  - nvm install 14
   - nvm use 10
   - node --version
   - npm --version
@@ -79,4 +82,7 @@ script:
   - ./node_modules/.bin/node-pre-gyp package testpackage
   - if [[ $TRAVIS_OS_NAME == "linux" ]]; then (nvm use 8 && xvfb-run -s '-screen 0 1024x768x24 +iglx' npm test); fi
   - if [[ $TRAVIS_OS_NAME == "linux" ]]; then (nvm use 10 && xvfb-run -s '-screen 0 1024x768x24 +iglx' npm test); fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then (nvm use 12 && xvfb-run -s '-screen 0 1024x768x24 +iglx' npm test); fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then (nvm use 13 && xvfb-run -s '-screen 0 1024x768x24 +iglx' npm test); fi
+  - if [[ $TRAVIS_OS_NAME == "linux" ]]; then (nvm use 14 && xvfb-run -s '-screen 0 1024x768x24 +iglx' npm test); fi
   - if [[ "${PUBLISH_BINARY}" == "true" ]]; then ./scripts/publish.sh; rm -rf {build,lib}; ./node_modules/.bin/node-pre-gyp install --fallback-to-build=false; npm test; fi

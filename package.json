@@ -19,9 +19,7 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "@mapbox/cmake-node-module": "^1.2.0",
-    "minimatch": "^3.0.4",
-    "node-pre-gyp": "^0.15.0",
-    "npm-run-all": "^4.1.5"
+    "node-pre-gyp": "^0.15.0"
   },
   "binary": {
     "module_name": "mbgl",
