@@ -1,6 +1,6 @@
 {
   "name": "@naturalatlas/mapbox-gl-native",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Node.js bindings to Mapbox GL native",
   "keywords": [
     "mbgl",
