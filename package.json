@@ -34,6 +34,7 @@
     "node": ">=8"
   },
   "devDependencies": {
+    "pixelmatch": "^5.2.1",
     "pngjs": "^5.0.0",
     "request": "^2.88.2",
     "tape": "^5.0.1"
